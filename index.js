@@ -5,7 +5,7 @@ import userRouter from "./routes/userRouter.js";
 
 const app = express();
 
-const mongoUrl = "mongodb+srv://kasunsagara689:SyIxEyY6Qmg5LB25@cluster0.ck5vn.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const mongoUrl = "mongodb+srv://kasunsagara689:XITheMewL2g68pEp@cluster0.hgtve.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 mongoose.connect(mongoUrl,{});
 
