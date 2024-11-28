@@ -2,10 +2,13 @@ import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import userRouter from "./routes/userRouter.js";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 
-const mongoUrl = "mongodb+srv://kasunsagara689:o9Ak5UcNh4eLBqmt@cluster0.yfs6z.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const mongoUrl = process.env.MONGO_DB_URI;
 
 mongoose.connect(mongoUrl,{});
 
