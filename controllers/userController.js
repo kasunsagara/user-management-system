@@ -34,7 +34,7 @@ export async function getUserByName(req, res) {
             message: "User fetch failed"
         })
     }
-}
+}  
 
 export async function createUser(req, res) {
 
