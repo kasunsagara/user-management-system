@@ -1,25 +1,25 @@
 import User from "../models/user.js";
 
-export function getUser(req, res) {
+export async function getUser(req, res) {
 
-    User.find()
-    .then((userList) => {
+    try {
+        const userList = await User.find();
         res.json({
             list: userList
         })
-    }).catch(() => {
+    } catch {
         res.json({
             message: "User fetch failed"
         })
-    })  
+    }
 }
 
-export function getUserByName(req, res) {
+export async function getUserByName(req, res) {
 
     const name = req.params.name;
 
-    User.find({name: name})
-    .then((userList) => {
+    try {
+        const userList = await User.find({name: name});
         if(userList.length == 0) {
             res.json({
                 message: "User not found"
@@ -29,53 +29,53 @@ export function getUserByName(req, res) {
                 list: userList
             })
         }
-    }).catch(() => {
+    } catch {
         res.json({
             message: "User fetch failed"
         })
-    })  
+    }
 }
 
-export function createUser(req, res) {
+export async function createUser(req, res) {
 
     const user = new User(req.body);
 
-    user.save()
-    .then(() => {
+    try {
+        await user.save();
         res.json({
             message: "User created successfully"
         })
-    }).catch(() => {
+    } catch {
         res.json({
             message: "User creation failed"
         })
-    })
+    }
 }
 
-export function updateUser(req, res) {
+export async function updateUser(req, res) {
 
-    User.updateOne({name: req.params.name})
-    .then(() => {
+    try {
+        await User.updateOne({name: req.params.name});
         res.json({
             message: "User updated successfully"
         })
-    }).catch(() => {
+    } catch {
         res.json({
             message: "User update failed"
         })
-    })
+    }
 }
 
-export function deleteUser(req, res) {
+export async function deleteUser(req, res) {
 
-    User.deleteOne({name: req.params.name})
-    .then(() => {
+    try {
+        await User.deleteOne({name: req.params.name});
         res.json({
             message: "User deleted successfully"
         })
-    }).catch(() => {
+    } catch {
         res.json({
             message: "User deletion failed"
         })
-    })
+    }
 }
