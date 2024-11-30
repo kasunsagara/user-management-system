@@ -5,12 +5,12 @@ const userRouter = express.Router();
 
 userRouter.get("/", getUser);
 
-userRouter.get("/:name", getUserByName);
+userRouter.get("/:firstName", getUserByName);
 
 userRouter.post("/", createUser);
 
-userRouter.put("/:name", updateUser);
+userRouter.put("/:firstName", updateUser);
 
-userRouter.delete("/:name", deleteUser);
+userRouter.delete("/:firstName", deleteUser);
 
 export default userRouter;

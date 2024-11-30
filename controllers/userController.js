@@ -16,25 +16,25 @@ export async function getUser(req, res) {
 
 export async function getUserByName(req, res) {
 
-    const name = req.params.name;
+    const firstName = req.params.firstName;
 
     try {
-        const userList = await User.find({name: name});
-        if(userList.length == 0) {
+        const userList = await User.find({firstName: firstName});
+        if(userList.length === 0) {
             res.json({
                 message: "User not found"
-            })
+            });
         } else {
             res.json({
                 list: userList
-            })
+            });
         }
-    } catch {
+    } catch (e) {
         res.json({
             message: "User fetch failed"
-        })
+        });
     }
-}  
+}
 
 export async function createUser(req, res) {
 
@@ -45,7 +45,7 @@ export async function createUser(req, res) {
         res.json({
             message: "User created successfully"
         })
-    } catch {
+    } catch (e) {
         res.json({
             message: "User creation failed"
         })
@@ -55,11 +55,11 @@ export async function createUser(req, res) {
 export async function updateUser(req, res) {
 
     try {
-        await User.updateOne({name: req.params.name});
+        await User.updateOne({firstName: req.params.firstName});
         res.json({
             message: "User updated successfully"
         })
-    } catch {
+    } catch (e) {
         res.json({
             message: "User update failed"
         })
@@ -69,11 +69,11 @@ export async function updateUser(req, res) {
 export async function deleteUser(req, res) {
 
     try {
-        await User.deleteOne({name: req.params.name});
+        await User.deleteOne({firstName: req.params.firstName});
         res.json({
             message: "User deleted successfully"
         })
-    } catch {
+    } catch (e) {
         res.json({
             message: "User deletion failed"
         })
