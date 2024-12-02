@@ -7,7 +7,7 @@ export async function getUser(req, res) {
         res.json({
             list: userList
         })
-    } catch {
+    } catch (error) {
         res.json({
             message: "User fetch failed"
         })
@@ -29,7 +29,7 @@ export async function getUserByName(req, res) {
                 list: userList
             });
         }
-    } catch (e) {
+    } catch (error) {
         res.json({
             message: "User fetch failed"
         });
@@ -45,7 +45,7 @@ export async function createUser(req, res) {
         res.json({
             message: "User created successfully"
         })
-    } catch (e) {
+    } catch (error) {
         res.json({
             message: "User creation failed"
         })
@@ -59,7 +59,7 @@ export async function updateUser(req, res) {
         res.json({
             message: "User updated successfully"
         })
-    } catch (e) {
+    } catch (error) {
         res.json({
             message: "User update failed"
         })
@@ -73,7 +73,7 @@ export async function deleteUser(req, res) {
         res.json({
             message: "User deleted successfully"
         })
-    } catch (e) {
+    } catch (error) {
         res.json({
             message: "User deletion failed"
         })
