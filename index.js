@@ -23,8 +23,8 @@ app.use(bodyParser.json());
 app.use("/api/users", userRouter);
 
 app.listen(
-    3000,
+    8000,
     () => {
-        console.log("Server is running on port 3000");
+        console.log("Server is running on port 8000");
     }
 );
