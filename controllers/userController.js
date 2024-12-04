@@ -14,6 +14,28 @@ export async function getUser(req, res) {
     }
 }
 
+export async function getUserByName(req, res) {
+
+  const firstName = req.params.firstName;
+
+  try {
+      const userList = await User.find({firstName: firstName});
+      if(userList.length === 0) {
+          res.json({
+              message: "User not found"
+          });
+      } else {
+          res.json({
+              list: userList
+          });
+      }
+  } catch (error) {
+      res.json({
+          message: "User fetch failed"
+      });
+  }
+}
+
 export async function createUser(req, res) {
 
     const user = new User(req.body);
@@ -75,4 +97,4 @@ export async function updateUser(req, res) {
       console.error("Error deleting user(s):", error);
       res.status(500).json({ message: "User deletion failed", error: error.message });
     }
-}                                                         
+}                                             
