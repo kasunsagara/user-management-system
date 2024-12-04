@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import userRouter from "./routes/userRouter.js";
 import dotenv from "dotenv";
+import cors from "cors";
 
 dotenv.config();
 
@@ -17,6 +18,8 @@ const connection = mongoose.connection;
 connection.once("open", () => {
     console.log("Database connected");
 });
+
+app.use(cors());
 
 app.use(bodyParser.json());
 
